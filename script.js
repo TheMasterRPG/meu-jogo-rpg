@@ -58,10 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>Vida:</strong> ${personagemAtual.vida}</p>
                 <p><strong>Ataque:</strong> ${personagemAtual.ataque}</p>
             `;
-            resultado.style.display = 'block'; // Mostra o resultado
+            resultado.style.display = 'block'; // Exibe o resultado
         } else {
             resultado.innerHTML = "";
-            resultado.style.display = 'none'; // Esconde o resultado
+            resultado.style.display = 'none'; // Oculta o resultado se não houver personagem
         }
     }
     
@@ -106,19 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
     
-    // Função para atualizar a exibição do inventário
-    function atualizarListaInventario() {
-        const lista = document.getElementById("lista-inventario");
-        lista.innerHTML = inventario.map((item, index) => `
-            <div>
-                <strong>${index + 1}. ${item.nome}</strong><br>
-                <em>${item.descricao}</em>
-            </div>
-        `).join("");
-        lista.style.display = inventario.length > 0 ? 'block' : 'none'; // Mostra ou esconde a lista
-    }
-    
-    // Funções para salvar e carregar o inventário
     salvarInventarioButton.onclick = () => {
         localStorage.setItem("inventario", JSON.stringify(inventario));
         alert("Inventário salvo!");
@@ -134,28 +121,43 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Nenhum inventário salvo.");
         }
     };
-    
-    // Função para rolar os dados
-    window.rolarDado = (faces) => {
-        const resultado = Math.floor(Math.random() * faces) + 1;
-        document.getElementById(`resultado-d${faces}`).innerText = `Resultado: ${resultado}`;
+
+    // Função para atualizar a lista de itens do inventário
+    function atualizarListaInventario() {
+        const lista = document.getElementById("lista-inventario");
+        lista.innerHTML = "";
+        inventario.forEach((item, index) => {
+            lista.innerHTML += `<p><strong>${index}:</strong> ${item.nome} - ${item.descricao}</p>`;
+        });
+        lista.style.display = inventario.length ? 'block' : 'none'; // Exibe a lista apenas se houver itens
+    }
+
+    // Função para rolar dados
+    window.rolarDado = function (sides) {
+        const resultado = Math.floor(Math.random() * sides) + 1;
+        document.getElementById(`resultado-d${sides}`).innerText = `Resultado: ${resultado}`;
     };
-    
-    // Função para redefinir tudo
-    document.getElementById("redefinir-button").onclick = () => {
-        personagemAtual = null;
-        inventario = [];
-        atualizarResultadoPersonagem();
-        atualizarListaInventario();
-        localStorage.removeItem("personagem");
-        localStorage.removeItem("inventario");
-        alert("Tudo redefinido!");
+
+    // Função para alternar a visibilidade dos cards
+    window.toggleCard = function (cardId) {
+        const cardContent = document.querySelector(`#${cardId} .card-content`);
+        cardContent.style.display = cardContent.style.display === 'none' ? 'block' : 'none';
     };
-    
-    // Função para alternar a visibilidade dos cartões
-    window.toggleCard = (cardId) => {
-        const card = document.getElementById(cardId);
-        const content = card.querySelector('.card-content');
-        content.style.display = content.style.display === 'none' ? 'block' : 'none';
+
+    // Funções para anotações
+    document.getElementById("salvar-anotacoes-button").onclick = () => {
+        const anotacoesInput = document.getElementById("anotacoes-input").value;
+        localStorage.setItem("anotacoes", anotacoesInput);
+        alert("Anotações salvas!");
+    };
+
+    document.getElementById("carregar-anotacoes-button").onclick = () => {
+        const anotacoesSalvas = localStorage.getItem("anotacoes");
+        if (anotacoesSalvas) {
+            document.getElementById("anotacoes-input").value = anotacoesSalvas;
+            alert("Anotações carregadas!");
+        } else {
+            alert("Nenhuma anotação salva.");
+        }
     };
 });
