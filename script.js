@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Índice inválido.");
         }
     };
-    
+
     salvarInventarioButton.onclick = () => {
         localStorage.setItem("inventario", JSON.stringify(inventario));
         alert("Inventário salvo!");
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Funções para anotações
     document.getElementById("salvar-anotacoes-button").onclick = () => {
-        const anotacoesInput = document.getElementById("anotacoes-input").value;
+        const anotacoesInput = document.getElementById("anotacoes-textarea").value;
         localStorage.setItem("anotacoes", anotacoesInput);
         alert("Anotações salvas!");
     };
@@ -154,10 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("carregar-anotacoes-button").onclick = () => {
         const anotacoesSalvas = localStorage.getItem("anotacoes");
         if (anotacoesSalvas) {
-            document.getElementById("anotacoes-input").value = anotacoesSalvas;
+            document.getElementById("anotacoes-textarea").value = anotacoesSalvas;
             alert("Anotações carregadas!");
         } else {
             alert("Nenhuma anotação salva.");
         }
     };
 });
+
