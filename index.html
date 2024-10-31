@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG - Criador de Personagens</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Centralizar o contêiner na tela */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #f1f1f1;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .card-content {
+            padding: 10px;
+            display: none;
+        }
+
+        .card-actions {
+            text-align: center;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #dados {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .dado-card {
+            text-align: center;
+        }
+
+        .dado-card img {
+            cursor: pointer;
+            width: 80px;
+            margin: 10px;
+        }
+
+        .resultado {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RPG - Criador de Personagens</h1>
+
+        <div id="card-personagem" class="card">
+            <div class="card-header" onclick="toggleCard('card-personagem')">
+                <h2>Personagem</h2>
+            </div>
+            <div class="card-content" id="resultado-criacao"></div>
+            <div class="card-actions">
+                <button id="criar-personagem-button">Criar Personagem</button>
+                <button id="editar-personagem-button">Editar Personagem</button>
+                <button id="salvar-personagem-button">Salvar Personagem</button>
+                <button id="carregar-personagem-button">Carregar Personagem</button>
+            </div>
+        </div>
+
+        <div id="card-inventario" class="card">
+            <div class="card-header" onclick="toggleCard('card-inventario')">
+                <h2>Inventário</h2>
+            </div>
+            <div class="card-content" id="lista-inventario"></div>
+            <div class="card-actions">
+                <button id="adicionar-item-button">Adicionar Item</button>
+                <button id="editar-inventario-button">Editar Item</button>
+                <button id="salvar-inventario-button">Salvar Inventário</button>
+                <button id="carregar-inventario-button">Carregar Inventário</button>
+            </div>
+        </div>
+
+        <h2>Rolagem de Dados</h2>
+        <div id="dados">
+            <div class="dado-card">
+                <img id="d4" src="imagens/d4.png" alt="D4" onclick="rolarDado(4)">
+                <p>D4</p>
+                <div id="resultado-d4" class="resultado"></div>
+            </div>
+            <div class="dado-card">
+                <img id="d6" src="imagens/d6.png" alt="D6" onclick="rolarDado(6)">
+                <p>D6</p>
+                <div id="resultado-d6" class="resultado"></div>
+            </div>
+            <div class="dado-card">
+                <img id="d8" src="imagens/d8.png" alt="D8" onclick="rolarDado(8)">
+                <p>D8</p>
+                <div id="resultado-d8" class="resultado"></div>
+            </div>
+            <div class="dado-card">
+                <img id="d10" src="imagens/d10.png" alt="D10" onclick="rolarDado(10)">
+                <p>D10</p>
+                <div id="resultado-d10" class="resultado"></div>
+            </div>
+            <div class="dado-card">
+                <img id="d12" src="imagens/d12.png" alt="D12" onclick="rolarDado(12)">
+                <p>D12</p>
+                <div id="resultado-d12" class="resultado"></div>
+            </div>
+            <div class="dado-card">
+                <img id="d20" src="imagens/d20.png" alt="D20" onclick="rolarDado(20)">
+                <p>D20</p>
+                <div id="resultado-d20" class="resultado"></div>
+            </div>
+        </div>
+
+        <div id="card-anotacoes" class="card">
+            <div class="card-header" onclick="toggleCard('card-anotacoes')">
+                <h2>Anotações</h2>
+            </div>
+            <div class="card-content">
+                <textarea id="anotacoes-textarea" rows="5"></textarea>
+            </div>
+            <div class="card-actions">
+                <button id="salvar-anotacoes-button">Salvar Anotações</button>
+                <button id="carregar-anotacoes-button">Carregar Anotações</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

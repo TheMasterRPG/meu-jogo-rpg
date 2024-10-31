@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #eaeaea;
+    color: #444;
+    line-height: 1.6;
+    padding: 30px;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Altura mínima da página */
+}
+
+.container {
+    max-width: 800px; /* Largura máxima do contêiner */
+    width: 100%; /* Largura total */
+}
+
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-actions {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-actions button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.card-actions button:hover {
+    background-color: #1c598a;
+}
+
+textarea {
+    width: 100%;
+    border: 2px solid #3498db;
+    border-radius: 4px;
+    padding: 10px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.dado-card {
+    border: 1px solid #3498db;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    background: white;
+}
+
+.resultado {
+    margin-top: 5px;
+    font-weight: bold;
+    color: #e74c3c; /* Destaque em vermelho */
+}
