@@ -5,37 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPG - Criador de Personagens</title>
     <link rel="stylesheet" href="estilo.css">
-    <style>
-        /* Centralizar o contêiner na tela */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-            font-family: Arial, sans-serif;
-        }
+</head>
+<body>
+    <div class="container">
+        <h1>RPG - Criador de Personagens</h1>
 
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
+        <div id="card-personagem" class="card">
+            <div class="card-header" onclick="toggleCard('card-personagem')">
+                <h2>Personagem</h2>
+            </div>
+            <div class="card-content" id="resultado-criacao" style="display: none;">
+                <!-- Conteúdo do personagem -->
+                <p>Detalhes do personagem aqui.</p>
+            </div>
+            <div class="card-actions">
+                <button id="criar-personagem-button">Criar Personagem</button>
+                <button id="editar-personagem-button">Editar Personagem</button>
+                <button id="salvar-personagem-button">Salvar Personagem</button>
+                <button id="carregar-personagem-button">Carregar Personagem</button>
+            </div>
+        </div>
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+        <div id="card-inventario" class="card">
+            <div class="card-header" onclick="toggleCard('card-inventario')">
+                <h2>Inventário</h2>
+            </div>
+            <div class="card-content" id="lista-inventario" style="display: none;">
+                <!-- Conteúdo do inventário -->
+                <p>Itens do inventário aqui.</p>
+            </div>
+            <div class="card-actions">
+                <button id="adicionar-item-button">Adicionar Item</button>
+                <button id="editar-inventario-button">Editar Item</button>
+                <button id="salvar-inventario-button">Salvar Inventário</button>
+                <button id="carregar-inventario-button">Carregar Inventário</button>
+            </div>
+        </div>
 
-        .card {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+        <div id="card-anotacoes" class="card">
+            <div class="card-header" onclick="toggleCard('card-anotacoes')">
+                <h2>Anotações</h2>
+            </div>
+            <div class="card-content" style="display: none;">
+                <textarea id="anotacoes-textarea" rows="5" cols="30"></textarea>
+            </div>
+            <div class="card-actions">
+                <button id="salvar-anotacoes-button">Salvar Anotações</button>
+                <button id="carregar-anotacoes-button">Carregar Anotações</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
             overflow: hidden;
         }
 
