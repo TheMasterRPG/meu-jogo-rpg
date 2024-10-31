@@ -1,127 +1,76 @@
-* {
-    box-sizing: border-box; /* Adiciona box-sizing para todos os elementos */
-    margin: 0; /* Remove margens padrão */
-    padding: 0; /* Remove preenchimentos padrão */
-}
-
 body {
-    font-family: Arial, sans-serif; /* Fonte padrão */
-    background-color: #f4f4f4; /* Cor de fundo */
-    color: #333; /* Cor do texto */
-    line-height: 1.6; /* Espaçamento entre linhas */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
 .container {
-    max-width: 800px; /* Largura máxima da página */
-    margin: 20px auto; /* Centraliza horizontalmente */
-    padding: 20px; /* Preenchimento interno */
-    background: white; /* Cor de fundo do container */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra do container */
+    max-width: 800px;
+    margin: auto;
 }
 
-h1, h2 {
-    text-align: center; /* Centraliza títulos */
-    margin-bottom: 20px; /* Margem inferior */
+h1 {
+    text-align: center;
 }
 
 .card {
-    margin-bottom: 20px; /* Margem inferior entre cartões */
-    border-radius: 8px; /* Bordas arredondadas */
-    overflow: hidden; /* Oculta conteúdo que transborda */
-    transition: background 0.3s; /* Transição suave para a cor de fundo */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-    background-color: #f1f1f1; /* Cor de fundo do cabeçalho */
-    padding: 10px; /* Preenchimento interno */
-    cursor: pointer; /* Cursor de ponteiro */
-    text-align: center; /* Centraliza o texto */
-    font-weight: bold; /* Destaca o texto */
+    background-color: #f1f1f1;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .card-content {
-    padding: 10px; /* Preenchimento interno */
-    display: none; /* Oculta o conteúdo por padrão */
+    padding: 10px;
+    display: none;
 }
 
 .card-actions {
-    text-align: center; /* Centraliza ações */
-    padding: 10px; /* Preenchimento interno */
+    text-align: center;
+    padding: 10px;
 }
 
 button {
-    background-color: #3498db; /* Cor de fundo do botão */
-    color: white; /* Cor do texto */
-    padding: 10px 20px; /* Preenchimento interno */
-    border: none; /* Remove borda padrão */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de ponteiro */
-    margin: 5px; /* Margem entre botões */
-    transition: background 0.3s; /* Transição suave */
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 button:hover {
-    background-color: #2980b9; /* Cor de fundo ao passar o mouse */
+    background-color: #2980b9;
 }
 
 #dados {
-    display: flex; /* Exibe os dados em linha */
-    justify-content: space-around; /* Espaça os itens uniformemente */
-    flex-wrap: wrap; /* Permite quebra de linha */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .dado-card {
-    text-align: center; /* Centraliza o texto dos dados */
-    border: 1px solid #3498db; /* Borda em torno do dado */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px; /* Preenchimento interno */
-    background-color: white; /* Cor de fundo do dado */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra do dado */
-    margin: 10px; /* Margem entre dados */
-    transition: transform 0.3s; /* Transição suave para transformação */
-}
-
-.dado-card:hover {
-    transform: scale(1.05); /* Aumenta levemente ao passar o mouse */
+    text-align: center;
 }
 
 .dado-card img {
-    cursor: pointer; /* Cursor de ponteiro */
-    width: 80px; /* Largura da imagem */
-    margin: 10px; /* Margem entre a imagem e o texto */
+    cursor: pointer;
+    width: 80px;
+    margin: 10px;
 }
 
 .resultado {
-    margin-top: 5px; /* Margem superior */
-    font-weight: bold; /* Destaca o texto */
-}
-
-textarea {
-    width: 100%; /* Largura total */
-    padding: 10px; /* Preenchimento interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    border: 1px solid #ddd; /* Borda suave */
-    resize: none; /* Desabilita redimensionamento */
-}
-
-textarea:focus {
-    border-color: #3498db; /* Cor da borda ao focar */
-    outline: none; /* Remove contorno padrão */
-}
-
-@media (max-width: 600px) {
-    .card-actions {
-        flex-direction: column; /* Alinha os botões em coluna */
-    }
-
-    button {
-        margin-bottom: 10px; /* Margem inferior */
-        width: 100%; /* Largura total dos botões */
-    }
-
-    .dado-card {
-        width: 90%; /* Largura dos dados em telas pequenas */
-    }
+    margin-top: 5px;
+    font-weight: bold;
 }
 
