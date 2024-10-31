@@ -31,7 +31,7 @@ h1 {
 
 .card-content {
     padding: 10px;
-    display: none;
+    display: none; /* Ocultar conteúdo inicialmente */
 }
 
 .card-actions {
@@ -74,3 +74,9 @@ button:hover {
     font-weight: bold;
 }
 
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
