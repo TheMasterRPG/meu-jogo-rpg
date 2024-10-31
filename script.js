@@ -29,24 +29,26 @@ document.addEventListener("DOMContentLoaded", () => {
         atualizarResultadoPersonagem();
     };
 
+    // Função para editar o personagem atual
     editarPersonagemButton.onclick = () => {
         if (personagemAtual) {
             const nome = prompt("Novo nome do personagem:", personagemAtual.nome);
             const nivel = parseInt(prompt("Novo nível do personagem:", personagemAtual.nivel));
             const vida = parseInt(prompt("Nova vida do personagem:", personagemAtual.vida));
             const ataque = parseInt(prompt("Novo ataque do personagem:", personagemAtual.ataque));
-
+    
             personagemAtual.nome = nome;
             personagemAtual.nivel = nivel;
             personagemAtual.vida = vida;
             personagemAtual.ataque = ataque;
-
+    
             atualizarResultadoPersonagem();
         } else {
             alert("Nenhum personagem criado.");
         }
     };
-
+    
+    // Função para atualizar a exibição do personagem
     function atualizarResultadoPersonagem() {
         const resultado = document.getElementById("resultado-criacao");
         if (personagemAtual) {
@@ -56,11 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>Vida:</strong> ${personagemAtual.vida}</p>
                 <p><strong>Ataque:</strong> ${personagemAtual.ataque}</p>
             `;
+            resultado.style.display = 'block'; // Mostra o resultado
         } else {
             resultado.innerHTML = "";
+            resultado.style.display = 'none'; // Esconde o resultado
         }
     }
-
+    
+    // Funções para salvar e carregar o personagem
     salvarPersonagemButton.onclick = () => {
         if (personagemAtual) {
             localStorage.setItem("personagem", JSON.stringify(personagemAtual));
@@ -69,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Nenhum personagem para salvar.");
         }
     };
-
+    
     carregarPersonagemButton.onclick = () => {
         const personagemSalvo = localStorage.getItem("personagem");
         if (personagemSalvo) {
@@ -80,14 +85,15 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Nenhum personagem salvo.");
         }
     };
-
+    
+    // Funções do Inventário
     adicionarItemButton.onclick = () => {
         const nomeItem = prompt("Nome do item:");
         const descricaoItem = prompt("Descrição do item:");
         inventario.push({ nome: nomeItem, descricao: descricaoItem });
         atualizarListaInventario();
     };
-
+    
     editarInventarioButton.onclick = () => {
         const index = parseInt(prompt("Índice do item para editar (0 a " + (inventario.length - 1) + "):"));
         if (index >= 0 && index < inventario.length) {
@@ -99,7 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Índice inválido.");
         }
     };
-
+    
+    // Função para atualizar a exibição do inventário
     function atualizarListaInventario() {
         const lista = document.getElementById("lista-inventario");
         lista.innerHTML = inventario.map((item, index) => `
@@ -108,13 +115,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <em>${item.descricao}</em>
             </div>
         `).join("");
+        lista.style.display = inventario.length > 0 ? 'block' : 'none'; // Mostra ou esconde a lista
     }
-
+    
+    // Funções para salvar e carregar o inventário
     salvarInventarioButton.onclick = () => {
         localStorage.setItem("inventario", JSON.stringify(inventario));
         alert("Inventário salvo!");
     };
-
+    
     carregarInventarioButton.onclick = () => {
         const inventarioSalvo = localStorage.getItem("inventario");
         if (inventarioSalvo) {
@@ -125,12 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Nenhum inventário salvo.");
         }
     };
-
+    
+    // Função para rolar os dados
     window.rolarDado = (faces) => {
         const resultado = Math.floor(Math.random() * faces) + 1;
         document.getElementById(`resultado-d${faces}`).innerText = `Resultado: ${resultado}`;
     };
-
+    
+    // Função para redefinir tudo
     document.getElementById("redefinir-button").onclick = () => {
         personagemAtual = null;
         inventario = [];
@@ -140,7 +151,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("inventario");
         alert("Tudo redefinido!");
     };
-
+    
+    // Função para alternar a visibilidade dos cartões
     window.toggleCard = (cardId) => {
         const card = document.getElementById(cardId);
         const content = card.querySelector('.card-content');
